@@ -9,7 +9,7 @@ let siteData = {
     },
 
     // 2. 관리자 비밀번호 해시값 (현재 비밀번호: admin)
-    adminPasswordHash: "8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918",
+    adminPasswordHash: "fe1ad13c3caa21676fb70219cf62632e266b34facd799da4d0eb2683e3005f3d",
 
     // 3. 메인 화면 호버 애니메이션용 카테고리 (id 속성 추가됨)
     categories: [
