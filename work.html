@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Works</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="work-page">
+    <header id="header">
+        <a href="index.html" class="back-btn">← BACK</a>
+        <h1 id="category-title" class="category-title"></h1>
+        <button id="admin-login-btn" class="admin-btn">🔒</button>
+    </header>
+
+    <div class="admin-panel" id="admin-panel" style="display: none;">
+        <button id="add-new-btn" class="add-btn">+ ADD NEW WORK</button>
+        <span class="admin-status">Admin Mode Active</span>
+    </div>
+
+    <section class="portfolio-grid fade-in-up" id="portfolio-grid"></section>
+
+    <!-- 모달창 -->
+    <div id="edit-modal" class="modal">
+        <div class="modal-content">
+            <h2>Add New Work</h2>
+            <input type="text" id="work-title" placeholder="Title (e.g., My New Video)">
+            <input type="text" id="work-src" placeholder="Embed URL or Image Link">
+            <div class="modal-buttons">
+                <button id="save-btn" class="save-btn">SAVE</button>
+                <button id="close-modal-btn" class="close-btn">CANCEL</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="data.js"></script>
+    <script src="work.js"></script>
+</body>
+</html>

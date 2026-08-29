@@ -1,0 +1,290 @@
+/* 리셋 및 기본 설정 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #0f0f0f;
+    color: #ffffff;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+/* ---------------- 공통 헤더 ---------------- */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem 4rem;
+    position: absolute;
+    width: 100%;
+    top: 0;
+    z-index: 10;
+}
+
+.title-group {
+    display: flex;
+    flex-direction: column;
+}
+
+#site-name {
+    font-size: 1.5rem;
+    font-weight: bold;
+    letter-spacing: -1px;
+}
+
+.header-info {
+    display: flex;
+    gap: 2rem;
+    font-size: 0.85rem;
+    color: #888;
+    text-transform: uppercase;
+}
+
+/* ---------------- 메인 히어로 섹션 ---------------- */
+.hero {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.menu-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 2;
+}
+
+.menu-item {
+    font-size: 6rem;
+    font-weight: 900;
+    color: #333;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: color 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    line-height: 1.1;
+    letter-spacing: -3px;
+    text-decoration: none;
+}
+
+.menu-item:hover {
+    color: #ffffff;
+}
+
+#floating-images-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.float-img {
+    position: absolute;
+    border-radius: 12px;
+    object-fit: cover;
+    opacity: 0;
+    transform: scale(0.8) translateY(20px);
+    transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+}
+
+.float-img.active {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+}
+
+/* ---------------- 포트폴리오 그리드 (공통) ---------------- */
+.portfolio-grid {
+    padding: 4rem;
+    display: grid;
+    /* auto-fit: 남는 가로 공간을 자동으로 꽉 채우도록 분배합니다 */
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 3rem;
+    background-color: #151515;
+    min-height: 100vh;
+}
+
+.media-card {
+    background: #000;
+    border-radius: 16px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    align-self: start;
+    
+    /* 화면을 채우되 아이템이 1개일 때 화면 전체를 덮는 현상을 막기 위해 900px을 한계치로 설정 */
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.media-card:hover {
+    transform: translateY(-10px);
+}
+
+.media-card iframe, .media-card img {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border: none;
+    object-fit: cover;
+    display: block;
+}
+
+.card-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem;
+}
+
+.card-info h3 {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #eee;
+}
+
+/* ---------------- 서브 페이지 (work.html) 전용 스타일 ---------------- */
+.work-page header {
+    position: relative; 
+    padding: 3rem 4rem;
+    background-color: #0f0f0f;
+}
+
+.work-page .portfolio-grid {
+    padding-top: 2rem;
+}
+
+.back-btn {
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    opacity: 0.7;
+    transition: opacity 0.3s;
+}
+
+.back-btn:hover {
+    opacity: 1;
+}
+
+.category-title {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2.5rem;
+    letter-spacing: -1px;
+}
+
+.admin-btn {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    opacity: 0.3;
+    transition: opacity 0.3s;
+}
+
+.admin-btn:hover {
+    opacity: 1;
+}
+
+/* 관리자 패널 */
+.admin-panel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.05);
+    margin: 0 4rem 2rem 4rem; 
+    border-radius: 12px;
+}
+
+.add-btn { background: #fff; color: #000; border: none; padding: 10px 20px; font-weight: bold; border-radius: 6px; cursor: pointer; }
+.admin-status { color: #4CAF50; font-size: 0.9rem; font-weight: bold; }
+.delete-btn { background: #ff4444; color: white; border: none; padding: 6px 12px; border-radius: 4px; cursor: pointer; }
+
+/* 팝업 모달창 스타일 */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.8);
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+}
+
+.modal-content {
+    background: #1a1a1a;
+    padding: 3rem;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.modal-content input { padding: 12px; border: 1px solid #333; background: #000; color: #fff; border-radius: 6px; }
+.modal-buttons { display: flex; gap: 10px; margin-top: 10px; }
+.save-btn { background: #4CAF50; color: white; padding: 10px; flex: 1; border: none; border-radius: 6px; cursor: pointer; }
+.close-btn { background: #555; color: white; padding: 10px; flex: 1; border: none; border-radius: 6px; cursor: pointer; }
+
+/* 등장 애니메이션 */
+.fade-in-up { animation: fadeInUp 0.8s ease forwards; }
+@keyframes fadeInUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
+
+/* ---------------- 모바일 반응형 UI ---------------- */
+@media (max-width: 768px) {
+    header {
+        padding: 1.5rem;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+    
+    .header-info {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    .menu-item {
+        font-size: 3.5rem;
+        letter-spacing: -1px;
+    }
+    
+    .portfolio-grid {
+        padding: 2rem 1.5rem;
+        grid-template-columns: 1fr; 
+    }
+    
+    .work-page header {
+        flex-direction: row; 
+        justify-content: space-between;
+        align-items: center;
+        padding: 1.5rem;
+    }
+    
+    .category-title {
+        position: static;
+        transform: none;
+        font-size: 1.5rem;
+    }
+    
+    .admin-panel {
+        flex-direction: column;
+        margin: 1rem 1.5rem;
+        padding: 1.5rem;
+    }
+    
+    .media-card {
+        max-width: 100%;
+    }
+}
